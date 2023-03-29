@@ -70,6 +70,7 @@ class MainWindow:
         self.time_label.pack()
 
         asyncio.create_task(self.time_loop())
+        asyncio.create_task(self.map_update_loop())
 
         while True:
             self.main_window.update()
@@ -86,6 +87,14 @@ class MainWindow:
         while True:
             self.time_label.config(text=f"{(await self.socket.get_time()).time}")
             await asyncio.sleep(1)
+
+
+    async def map_update_loop(self):
+        print("Map update loop started")
+        while True:
+            map = await self.socket.get_map()
+            map.save("map.png")
+            await asyncio.sleep(15)
 
             
 
