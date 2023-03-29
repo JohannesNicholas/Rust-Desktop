@@ -2,6 +2,7 @@ import os
 import rustplus
 import asyncio
 import tkinter as tk
+from PIL import ImageTk
 
 
 
@@ -66,11 +67,17 @@ class MainWindow:
         self.main_window.title("Rust+Desktop")
         self.main_window.geometry("400x400")
 
+        # Time
         self.time_label = tk.Label(self.main_window, text="Loading time...")
         self.time_label.pack()
 
+        #Canvas for the map
+        self.map_canvas = tk.Canvas(self.main_window, width=400, height=400)
+        self.map_canvas.pack()
+
         asyncio.create_task(self.time_loop())
         asyncio.create_task(self.map_update_loop())
+        asyncio.create_task(self.location_update_loop())
 
         while True:
             self.main_window.update()
@@ -92,9 +99,35 @@ class MainWindow:
     async def map_update_loop(self):
         print("Map update loop started")
         while True:
-            map = await self.socket.get_map()
+            map = await self.socket.get_map(False, True, True)
             map.save("map.png")
+
+            
             await asyncio.sleep(15)
+
+    async def location_update_loop(self):
+        print("Minimap player location update loop started")
+        while True:
+            # Get the players position
+            team = await self.socket.get_team_info()
+            player = team.members[0]
+
+
+            mapsize = 4500
+
+            #location to draw the map
+            x = 0 - (player.x/mapsize) * 2000
+            y = -2000 + (player.y/mapsize) * 2000
+
+            # Draw the map on the canvas
+            img = ImageTk.PhotoImage(file="map.png")
+            self.map_canvas.create_image(x + 200, y + 200, anchor=tk.NW, image=img)
+            
+            # Draw a circle in the middle of the canvas
+            self.map_canvas.create_oval(200 - 5, 200 - 5, 200 + 5, 200 + 5, fill="lime")
+
+            self.map_canvas.update()
+            await asyncio.sleep(0.5)
 
             
 
