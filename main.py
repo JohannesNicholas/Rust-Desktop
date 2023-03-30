@@ -3,31 +3,37 @@ import rustplus
 import asyncio
 import tkinter as tk
 from PIL import ImageTk
+import customtkinter as ctk
 
 
 
 
 class SignInPage:
     def __init__(self):
+
+        ctk.set_appearance_mode("dark")  # Modes: system (default), light, dark
+        ctk.set_default_color_theme("blue")
+
+
         # Start a window
-        self.window = tk.Tk()
+        self.window = ctk.CTk()
         self.window.title("Rust+Desktop")
         self.window.geometry("400x400")
 
         # Input fields for the server ip and port, steam id and player token
-        tk.Label(self.window, text="Server IP:").pack()
-        ip = tk.Entry(self.window)
+        ctk.CTkLabel(self.window, text="Server IP:").pack()
+        ip = ctk.CTkEntry(self.window)
         ip.pack()
-        tk.Label(self.window, text="Server Port:").pack()
-        port = tk.Entry(self.window)
+        ctk.CTkLabel(self.window, text="Server Port:").pack()
+        port = ctk.CTkEntry(self.window)
         port.pack()
-        tk.Label(self.window, text="Steam ID:").pack()
-        steam_id = tk.Entry(self.window)
+        ctk.CTkLabel(self.window, text="Steam ID:").pack()
+        steam_id = ctk.CTkEntry(self.window)
         steam_id.pack()
-        tk.Label(self.window, text="Player Token:").pack()
-        player_token = tk.Entry(self.window)
+        ctk.CTkLabel(self.window, text="Player Token:").pack()
+        player_token = ctk.CTkEntry(self.window)
         player_token.pack()
-        tk.Button(self.window, text="Connect", command=lambda: asyncio.run(self.connect(ip.get(), port.get(), steam_id.get(), player_token.get()))).pack()
+        ctk.CTkButton(self.window, text="Connect", command=lambda: asyncio.run(self.connect(ip.get(), port.get(), steam_id.get(), player_token.get()))).pack()
 
         # Read the config file if it exists
         if os.path.exists("config.json"):
