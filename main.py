@@ -69,16 +69,16 @@ class SignInPage:
 class MainWindow:
     async def start(self, socket):
         self.socket = socket
-        self.main_window = tk.Tk()
+        self.main_window = ctk.CTk()
         self.main_window.title("Rust+Desktop")
         self.main_window.geometry("400x400")
 
         # Time
-        self.time_label = tk.Label(self.main_window, text="Loading time...")
+        self.time_label = ctk.CTkLabel(self.main_window, text="Loading time...")
         self.time_label.pack()
 
         #Canvas for the map
-        self.map_canvas = tk.Canvas(self.main_window, width=400, height=400)
+        self.map_canvas = ctk.CTkCanvas(self.main_window, width=400, height=400)
         self.map_canvas.pack()
 
         asyncio.create_task(self.time_loop())
@@ -98,7 +98,7 @@ class MainWindow:
     async def time_loop(self):
         print("Time loop started")
         while True:
-            self.time_label.config(text=f"{(await self.socket.get_time()).time}")
+            self.time_label.configure(text=f"{(await self.socket.get_time()).time}")
             await asyncio.sleep(1)
 
 
