@@ -60,15 +60,16 @@ class SignInPage:
         self.window.destroy()
 
         main_window = MainWindow()
-        await main_window.start(socket)
+        await main_window.start(socket, int(steam_id))
 
         
 
 
 
 class MainWindow:
-    async def start(self, socket):
+    async def start(self, socket, steam_id):
         self.socket = socket
+        self.steam_id = steam_id
         self.main_window = ctk.CTk()
         self.main_window.title("Rust+Desktop")
         self.main_window.geometry("400x400")
@@ -116,7 +117,8 @@ class MainWindow:
         while True:
             # Get the players position
             team = await self.socket.get_team_info()
-            player = team.members[0]
+            # get the player with the same steam id as the one used to connect to the server
+            player = [player for player in team.members if player.steam_id == self.steam_id][0]
 
 
             mapsize = 4500
