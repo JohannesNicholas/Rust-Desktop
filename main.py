@@ -1,8 +1,10 @@
-import os, threading, rustplus, asyncio
+import os, threading, rustplus, asyncio, textdistance
 import tkinter as tk
 import customtkinter as ctk
 from PIL import ImageTk, ImageFont, ImageDraw, Image
-DEBUG = False
+from collections import Counter
+import pandas as pd
+DEBUG = True
 
 class SignInPage:
     def __init__(self):
@@ -50,7 +52,7 @@ class SignInPage:
         with open("config.json", "w") as f:
             f.write(f'{{"ip": "{ip}", "port": "{port}", "steam_id": "{steam_id}", "player_token": "{player_token}"}}')
         
-        if DEBUG == True: socket = rustplus.RustSocket("rplustestserver.ollieee.xyz", None, 76561198181939243, -718287530, use_test_server=True) 
+        if DEBUG: socket = rustplus.RustSocket("rplustestserver.ollieee.xyz", None, 76561198181939243, -718287530, use_test_server=True) 
         else: socket = rustplus.RustSocket(ip, port, int(steam_id), int(player_token))
         await socket.connect()
         self.window.destroy()
@@ -70,7 +72,7 @@ class InitWindow:
 
         self.init_window.update()
         await asyncio.sleep(0.5)
-        if DEBUG == False: await asyncio.get_event_loop().create_task(self.map_update_loop())
+        if not DEBUG: await asyncio.get_event_loop().create_task(self.map_update_loop())
         await asyncio.sleep(0.5)
         self.init_window.destroy()
 
@@ -140,7 +142,6 @@ class MapCanvas(ctk.CTkCanvas):
         self.bind("<Configure>", self.on_resize)
         self.height = self.winfo_reqheight()
         self.width = self.winfo_reqwidth()
-    
     def on_resize(self, event):
         wscale = float(event.width)/self.width
         hscale = float(event.height)/self.height
@@ -151,18 +152,14 @@ class MapCanvas(ctk.CTkCanvas):
 class TeamCanvas(ctk.CTkCanvas):
     def __init__(self,parent,**kwargs):
         ctk.CTkCanvas.__init__(self,parent,**kwargs)
-        self.bind("<Configure>", self.on_resize)
         self.height = self.winfo_reqheight()
         self.width = self.winfo_reqwidth()
-    
-    def on_resize(self, event):
-        wscale = float(event.width)/self.width
-        hscale = float(event.height)/self.height
-        self.width = event.width
-        self.height = event.height
-        self.config(width=self.width, height=self.height)
-        self.scale("all",0,0,wscale,hscale)
 class ServerCanvas(ctk.CTkCanvas):
+    def __init__(self,parent,**kwargs):
+        ctk.CTkCanvas.__init__(self,parent,**kwargs)
+        self.height = self.winfo_reqheight()
+        self.width = self.winfo_reqwidth()
+class SearchCanvas(ctk.CTkCanvas):
     def __init__(self,parent,**kwargs):
         ctk.CTkCanvas.__init__(self,parent,**kwargs)
         self.height = self.winfo_reqheight()
@@ -182,6 +179,7 @@ class MainWindow:
             "Map": [MapCanvas, self.map_canvas],
             "Team": [TeamCanvas, self.team_canvas],
             "Server": [ServerCanvas, self.server_canvas],
+            "Search": [SearchCanvas, self.search_canvas]
         }
 
         for i in self.main_window.winfo_children():
@@ -196,6 +194,8 @@ class MainWindow:
                     if self.team_canvas != None: self.team_canvas.destroy(); self.team_canvas = None; self.widgets = []; self.team_info = None
                 if i == "Server":
                     if self.server_canvas != None: self.server_canvas.destroy(); self.server_canvas = None; self.server_info = None
+                if i == "Search":
+                    if self.search_canvas != None: self.search_canvas.destroy(); self.search_canvas = None
 
         if types[typee][1] not in self.main_window.winfo_children(): #make the menu if it doesnt exist
             if types[typee][0] == MapCanvas:
@@ -207,11 +207,97 @@ class MainWindow:
             elif types[typee][0] == ServerCanvas:
                 self.server_canvas = ServerCanvas(self.main_window, width=525, height=650, bg="gray14", highlightthickness=0)
                 self.server_canvas.pack()
+            elif types[typee][0] == SearchCanvas:
+                self.search_canvas = SearchCanvas(self.main_window, width=525, height=650, bg="gray14", highlightthickness=0)
+                self.search_canvas.pack()
+                self.setup_search()
 
         for i in self.menu.winfo_children(): #make the selected button green and the others the default colour
             if type(i) == ctk.CTkButton:
                 if i._text == typee: i.configure(fg_color="#0d610c", hover_color="#063b05")
                 else: i.configure(fg_color="#3a7ebf", hover_color="#325882")
+
+    async def lookup(self, item: ctk.CTkEntry, event):
+        self.search_label.configure(text="", text_color="red")
+        inputted = item.get()
+        item.delete(0, ctk.END)
+        vms = []
+        data = {}
+        data_inverse = {}
+        with open("data/formatted.txt", "r", encoding="utf-8") as f:
+            for line in (f.read()).split("\n"):
+                temp = line.split("|")
+                data[temp[0]] = temp[1]
+                data_inverse[temp[1]] = temp[0]
+        try: markers = await self.socket.get_markers()
+        except: return self.search_label.configure(text="An error has occured, please try again in a minute.", text_color="red")
+        if inputted != "":
+            test = self.alias(inputted)
+            test2 = self.correct(test)
+            if test2 == None: return self.search_label.configure(text="That is not a valid item/I do not have that item.", text_color="red")
+            if test != True: test = test2
+            itemid = data[test]
+        for element in markers:
+            if element.type == 3:
+                if element.sell_orders != []:
+                    for item in element.sell_orders:
+                        if inputted != "":
+                            if int(item.item_id) == int(itemid):
+                                vms.append(f"{rustplus.convert_xy_to_grid((element.x, element.y), self.mapsize)[0]}{rustplus.convert_xy_to_grid((element.x, element.y), self.mapsize)[1]} sells {test} for {item.cost_per_item}x {data_inverse[str(item.currency_id)]}")
+                        else: vms.append(f"{rustplus.convert_xy_to_grid((element.x, element.y), self.mapsize)[0]}{rustplus.convert_xy_to_grid((element.x, element.y), self.mapsize)[1]} sells {data_inverse[str(item.item_id)]} for {item.cost_per_item}x {data_inverse[str(item.currency_id)]}")
+        if vms != []:
+            funni = "\n".join(vms)
+            return self.search_label.configure(text=f"Vending Machines:\n{funni}", text_color="white")
+        else: return self.search_label.configure(text="Sorry, I could not find any VMs selling that item.", text_color="red")
+
+    def correct(self, input_word):
+        data = {}
+        with open("data/formatted.txt", "r", encoding="utf-8") as f:
+            for line in (f.read()).split("\n"):
+                temp = line.split("|")
+                data[temp[0]] = temp[1]
+        words = []
+        for element in data:
+            words.append(element)
+        V = set(words)
+        probs = {}
+        word_freq_dict = {}
+        word_freq_dict = Counter(words)
+        Total = sum(word_freq_dict.values())
+        for k in word_freq_dict.keys():
+            probs[k] = word_freq_dict[k]/Total
+        input_word = input_word.lower()
+        if input_word in V:
+            return True
+        else:
+            similarities = [1-(textdistance.Jaccard(qval=2).distance(v,input_word)) for v in word_freq_dict.keys()]
+            df = pd.DataFrame.from_dict(probs, orient='index').reset_index()
+            df = df.rename(columns={'index':'Word', 0:'Prob'})
+            df['Similarity'] = similarities
+            output = df.sort_values(['Similarity', 'Prob'], ascending=False).head()
+            replace_name = output.iat[0,0]
+            replace_sim = output.iat[0,2]
+            if replace_sim > 0.33333: return replace_name
+            else: return None
+
+    def alias(self, name):
+        aliases = {}
+        aliases["Timed Explosive Charge"] = "c4"; aliases["Explosives"] = "explo"; aliases["Gun Powder"] = "gp"; aliases["Handmade Shell"] = "handmade"; aliases["5.56 Rifle Ammo"] = "5.56"; aliases["Incendinary Rocket"] = ["inced", "incend"]; aliases["SAM Ammo"] = "sam"; aliases["Auto Turret"] = "turret"; aliases["Large Wood Box"] = "box"; aliases["Tool Cupboard"] = "tc"; aliases["F1 Grenade"] = "f1"; aliases["Shotgun Trap"] = "trap"; aliases["Large Medkit"] = "medkit"; aliases["Code Lock"] = "lock"; aliases["Low Grade Fuel"] = "lgf"; aliases["Medical Syringe"] = "syringe"; aliases["Assault Rifle"] = ["ak", "ak47"]; aliases["Rocket Launcher"] = "rpg"; aliases["Sleeping Bag"] = "bag"; aliases["Snap Trap"] = "bear trap"; aliases["High External Stone Wall"] = "wall"; aliases["Holosight"] = "holo"; aliases["Extended Magazine"] = ["extended mag", "extra ammo"]
+        for element in aliases:
+            if type(aliases[element]) == list:
+                for ele in aliases[element]:
+                    if name.lower() in ele.lower(): return element
+            else:
+                if name.lower() in aliases[element].lower(): return element
+        return name
+
+    def setup_search(self):
+        ctk.CTkLabel(self.search_canvas, text="Item to search for (Vending Machine Searching):").pack()
+        item = ctk.CTkEntry(self.search_canvas, 300)
+        item.pack()
+        item.bind('<Return>', lambda x: asyncio.get_running_loop().create_task(self.lookup(item, x)))
+        self.search_label = ctk.CTkLabel(self.search_canvas, 1920, text="", font=("Verdana", 14))
+        self.search_label.pack(pady=(20,0), padx=(20,20))
 
     async def start(self, socket, steam_id):
         self.socket: rustplus.RustSocket = socket
@@ -224,6 +310,7 @@ class MainWindow:
         self.map_canvas = None
         self.team_canvas = None
         self.server_canvas = None
+        self.search_canvas = None
 
         self.team_info = None
         self.server_info = None
@@ -249,6 +336,7 @@ class MainWindow:
         ctk.CTkButton(self.menu, 110, 30, text="Map", fg_color="#0d610c", hover_color="#063b05", command=lambda:self.topage("Map")).pack(pady=(15,0))
         ctk.CTkButton(self.menu, 110, 30, text="Team", command=lambda:self.topage("Team")).pack(pady=(5,0))
         ctk.CTkButton(self.menu, 110, 30, text="Server", command=lambda:self.topage("Server")).pack(pady=(5,0))
+        ctk.CTkButton(self.menu, 110, 30, text="Search", command=lambda:self.topage("Search")).pack(pady=(5,0))
 
         #Canvas for the map
         self.map_canvas = MapCanvas(self.main_window, width=525, height=650)
@@ -277,10 +365,14 @@ class MainWindow:
     async def update_server(self):
         print("LOOPS | Update Server Started")
         while True:
+            try:
+                if not self.main_window.winfo_exists():
+                    break
+            except: break
             s = await self.socket.get_info()
             self.server = s
-            if self.server_canvas != None:
-                if self.server_info == None:
+            if self.server_canvas:
+                if not self.server_info:
                     self.server_info = ctk.CTkFrame(self.server_canvas, height=500, width=1920, corner_radius=10, fg_color="gray10", bg_color="gray10")
                     self.server_info.pack()
                     ctk.CTkLabel(self.server_info, anchor="w", width=self.server_canvas.width/2, height=50, bg_color="gray10", fg_color="gray10", corner_radius=15, text=f"Name: {s.name}", font=("Verdana", 16)).grid(row=1, column=1)
@@ -298,9 +390,13 @@ class MainWindow:
     async def update_team(self):
         print("LOOPS | Update Team Started")
         while True:
+            try:
+                if not self.main_window.winfo_exists():
+                    break
+            except: break
             t = await self.socket.get_team_info()
             self.team = t
-            if self.team_canvas != None:
+            if self.team_canvas:
                 if str(t.leader_steam_id)[0] != "7":
                     if not self.team_info:
                         self.team_info = ctk.CTkLabel(self.team_canvas, height=50, bg_color="gray14", fg_color="gray14", corner_radius=3, text="You are not in a team.", font=("Verdana", 24)).pack()
@@ -327,13 +423,23 @@ class MainWindow:
     async def time_loop(self):
         print("LOOPS | Time Loop Started")
         while True:
-            self.time_label.configure(text=f"Time: {(await self.socket.get_time()).time}")
-            await asyncio.sleep(1)
+            try:
+                if not self.main_window.winfo_exists():
+                    break
+            except: break
+            try:
+                self.time_label.configure(text=f"Time: {(await self.socket.get_time()).time}")
+                await asyncio.sleep(1)
+            except: await asyncio.sleep(0.5)
 
     async def location_update_loop(self):
         print("LOOPS | Minimap Loop Started")
         while True:
-            if self.map_canvas != None:
+            try:
+                if not self.main_window.winfo_exists():
+                    break
+            except: break
+            if self.map_canvas:
                 team = self.team #get team info
                 player = [player for player in team.members if player.steam_id == self.steam_id][0] #get the player with the same steam id as the one used to connect to the server
                 mapsize = self.mapsize
@@ -350,7 +456,7 @@ class MainWindow:
                     img = ImageTk.PhotoImage(file="map.png")
                 
                 try:
-                    if self.map_canvas != None:
+                    if self.map_canvas:
                         self.map_canvas.create_image(x + self.map_canvas.width/2, y + self.map_canvas.height/2, anchor=tk.NW, image=img)
                         
                         # Draw own player

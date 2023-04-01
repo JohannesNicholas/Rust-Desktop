@@ -1,0 +1,786 @@
+Snowball Gun|550753330
+12 Gauge Buckshot|-1685290200
+12 Gauge Incendiary Shell|-1036635990
+12 Gauge Slug|-727717969
+16x Zoom Scope|174866732
+40mm HE Grenade|349762871
+40mm Shotgun Round|1055319033
+40mm Smoke Grenade|915408809
+5.56 Rifle Ammo|-1211166256
+8x Zoom Scope|567235583
+A Barrel Costume|-1215166612
+Above Ground Pool|1840570710
+Acoustic Guitar|-24352573
+Adv. Anti-Rad Tea|-1729415579
+Advanced Healing Tea|-2123125470
+Advanced Max Health Tea|603811464
+Advanced Ore Tea|2063916636
+Advanced Rad. Removal Tea|2021351233
+Advanced Scrap Tea|524678627
+Advanced Wood Tea|-541206665
+Advent Calendar|-2027793839
+Anchovy|342438846
+AND Switch|1171735914
+Animal Fat|-1018587433
+Anti-Rad Tea|-487356515
+Anti-Radiation Pills|-1432674913
+Apple|1548091822
+Arctic Scientist Suit|1107575710
+Arctic Suit|-470439097
+Armored Cockpit Vehicle Module|1874610722
+Armored Door|1353298668
+Armored Double Door|1221063409
+Armored Passenger Vehicle Module|-1615281216
+Assault Rifle|1545779598
+Assault Rifle - ICE|-1335497659
+Audio Alarm|2100007442
+Auto Turret|-2139580305
+Bandage|-2072273936
+Bandana Mask|-702051347
+Bandit Guard Gear|-1622110948
+Barbed Wooden Barricade|1382263453
+Barbeque|1099314009
+Baseball Bat|-2026042603
+Baseball Cap|-1022661119
+Basic Healing Tea|-929092070
+Basic Horse Shoes|-1211268013
+Basic Max Health Tea|-1184406448
+Basic Ore Tea|1480022580
+Basic Scrap Tea|263834859
+Basic Wood Tea|-649128577
+Battery - Small|609049394
+Beach Chair|-321431890
+Beach Parasol|-1621539785
+Beach Table|657352755
+Beach Towel|-8312704
+Beancan Grenade|1840822026
+Bed|-1273339005
+Beenie Hat|1675639563
+Binoculars|-1262185308
+Birthday Cake|1973165031
+Black Berry|1771755747
+Black Berry Clone|122783240
+Black Berry Seed|1911552868
+Black Raspberries|1931713481
+Bleach|1553078977
+Blocker|-690968985
+Blood|1776460938
+Blue Berry|1112162468
+Blue Berry Clone|838831151
+Blue Berry Seed|803954639
+Blue Boomer|1744298439
+Blue Dog Tags|1036321299
+Blue Jumpsuit|1601468620
+Blue Keycard|-484206264
+Blue Roman Candle|-515830359
+Blueberries|-586342290
+Blueprint|-996920608
+Bolt Action Rifle|1588298435
+Bone Armor|1746956556
+Bone Arrow|215754713
+Bone Club|1711033574
+Bone Fragments|1719978075
+Bone Helmet|-1903165497
+Bone Knife|1814288539
+Boogie Board|-1478094705
+Boom Box|-1113501606
+Boonie Hat|-23994173
+Boots|-1549739227
+Bota Bag|613961768
+Bronze Egg|844440409
+Bucket Helmet|850280505
+Building Plan|1525520776
+Bunny Ears|-1004426654
+Bunny Hat|23391694
+Bunny Onesie|-1266045928
+Burlap Gloves|21402876
+Burlap Headwrap|1877339384
+Burlap Shirt|602741290
+Burlap Shoes|-761829530
+Burlap Trousers|1992974553
+Burnt Bear Meat|-989755543
+Burnt Chicken|1973684065
+Burnt Deer Meat|-78533081
+Burnt Horse Meat|1917703890
+Burnt Human Meat|-682687162
+Burnt Pork|1391703481
+Burnt Wolf Meat|1827479659
+Burst Module|838308300
+Butcher Knife|-194509282
+Button|-1778897469
+Cable Tunnel|1835946060
+Cactus Flesh|1783512007
+Camera|-1316706473
+Camp Fire|1946219319
+Camper Vehicle Module|-1040518150
+Can of Beans|-700591459
+Can of Tuna|-1941646328
+Canbourine|-1379036069
+Candle Hat|1714496074
+Candy Cane|1121925526
+Candy Cane Club|1789825282
+Captain's Log|1230691307
+Car Key|946662961
+Card Movember Moustache|3380160
+Card Table|1081921512
+Carvable Pumpkin|1524980732
+Cassette - Long|476066818
+Cassette - Medium|-912398867
+Cassette - Short|1523403414
+Cassette Recorder|-1530414568
+Catfish|-587989372
+CCTV Camera|634478325
+Ceiling Light|1142993169
+Chainlink Fence|-1117626326
+Chainlink Fence Gate|1451568081
+Chainsaw|1104520648
+Chair|1534542921
+Champagne Boomer|1324203999
+Charcoal|-1938052175
+Chinese Lantern|-1916473915
+Chippy Arcade Game|359723196
+Chocolate Bar|-965336208
+Christmas Door Wreath|2009734114
+Christmas Lights|1058261682
+Christmas Tree|794443127
+Clatter Helmet|968019378
+Cloth|-858312878
+Coal 🙁|204391461
+Cockpit Vehicle Module|-1501451746
+Cockpit With Engine Vehicle Module|170758448
+Code Lock|1159991980
+Coffee Can Helmet|-803263829
+Coffin|573676040
+Combat Knife|2040726127
+Composter|-1488398114
+Compound Bow|884424049
+Computer Station|-1588628467
+Concrete Barricade|-1950721390
+Concrete Hatchet|1176355476
+Concrete Pickaxe|-1360171080
+Connected Speaker|968421290
+Cooked Bear Meat|1873897110
+Cooked Chicken|-1848736516
+Cooked Deer Meat|-1509851560
+Cooked Fish|1668129151
+Cooked Horse Meat|-1162759543
+Cooked Human Meat|1536610005
+Cooked Pork|-242084766
+Cooked Wolf Meat|813023040
+Corn|1367190888
+Corn Clone|-778875547
+Corn Seed|998894949
+Counter|-216999575
+Cowbell|-1049881973
+Crate Costume|1189981699
+Crossbow|1965232394
+Crude Oil|-321733511
+Cultist Deer Torch|-1175656359
+Cursed Cauldron|1242522330
+Custom SMG|1796682209
+Decorative Baubels|-1667224349
+Decorative Gingerbread Men|1686524871
+Decorative Pinecones|-129230242
+Decorative Plastic Candy Canes|-209869746
+Decorative Tinsel|2106561762
+Deluxe Christmas Lights|-151387974
+Diesel Fuel|1568388703
+Disco Ball|1895235349
+Disco Floor|1735402444
+Disco Floor|286648290
+Diving Fins|296519935
+Diving Mask|-113413047
+Diving Tank|-2022172587
+Dog Tag|1223900335
+Door Closer|1409529282
+Door Controller|-502177121
+Door Key|-1112793865
+Double Barrel Shotgun|-765183617
+Double Sign Post|1521286012
+Dragon Door Knocker|-854270928
+Dragon Mask|-22883916
+Drone|1588492232
+Drop Box|-1519126340
+Duct Tape|1401987718
+Duo Submarine|1015352446
+Easter Door Wreath|-979302481
+Egg Basket|1856217390
+Egg Suit|-747743875
+Egg Suit Sign Test|-394470247
+Electric Fuse|-629028935
+Electric Heater|-784870360
+Electrical Branch|-1448252298
+Elevator|1177596584
+Empty Can Of Beans|1655979682
+Empty Propane Tank|-1673693549
+Empty Tuna Can|-1557377697
+Engine Vehicle Module|1559779253
+Eoka Pistol|-75944661
+Explosive 5.56 Rifle Ammo|-1321651331
+Explosives|-592016202
+Extended Magazine|2005491391
+F1 Grenade|143803535
+Factory Door|2054391128
+Fertilizer|-930193596
+Festive Doorway Garland|674734128
+Festive Double Doorway Garland|-1230433643
+Festive Window Garland|-1379835144
+Fire Arrow|14241751
+Firecracker String|-1961560162
+Fishing Tackle|-1707425764
+Flame Thrower|-1215753368
+Flame Turret|528668503
+Flare|304481038
+Flashbang|-936921910
+Flasher Light|-939424778
+Flashlight|-196667575
+Flatbed Vehicle Module|-1880231361
+Floor grill|936496778
+Floor triangle grill|1983621560
+Fluid Combiner|-265292885
+Fluid Splitter|-1166712463
+Fluid Switch & Pump|443432036
+Fogger-3000|-1973785141
+Frankenstein Table|1575635062
+Fridge|1413014235
+Frog Boots|-1000573653
+Fuel Tank Vehicle Module|1186655046
+Furnace|-1999722522
+Garage Door|-148794216
+Garry's Mod Tool Gun|1803831286
+Gas Mask|1659114910
+Gears|479143914
+Geiger Counter|999690781
+Generic vehicle chassis|1770744540
+Generic vehicle module|878301596
+Ghost Costume|-1043618880
+Giant Candy Decor|-695124222
+Giant Lollipop Decor|282103175
+Glowing Eyes|-690276911
+Glue|-1899491405
+Gold Egg|-1002156085
+Granola Bar|-746030907
+Gravestone|809199956
+Graveyard Fence|-1679267738
+Green Berry|858486327
+Green Berry Clone|-1305326964
+Green Berry Seed|-1776128552
+Green Boomer|-656349006
+Green Industrial Wall Light|1268178466
+Green Keycard|37122747
+Green Roman Candle|-1306288356
+Grub|-568419968
+Gun Powder|-265876753
+Hab Repair|-1759188988
+Halloween Candy|-888153050
+Hammer|200773292
+Handmade Fishing Rod|1569882109
+Handmade Shell|588596902
+Hatchet|-1252059217
+Hazmat Suit|1266491000
+HBHF Sensor|-1507239837
+Headset|-1569700847
+Heavy Frankenstein Head|-297099594
+Heavy Frankenstein Legs|-2024549027
+Heavy Frankenstein Torso|1614528785
+Heavy Plate Helmet|1181207482
+Heavy Plate Jacket|-1102429027
+Heavy Plate Pants|-1778159885
+Heavy Scientist Suit|-1772746857
+Hemp Clone|-886280491
+Hemp Seed|-237809779
+Herring|-1698937385
+Hide Boots|794356786
+Hide Halterneck|3222790
+Hide Pants|1722154847
+Hide Poncho|980333378
+Hide Skirt|-1773144852
+Hide Vest|196700171
+High External Stone Gate|-691113464
+High External Stone Wall|-967648160
+High External Wooden Gate|-335089230
+High External Wooden Wall|99588025
+High Ice Wall|-985781766
+High Quality Carburetor|656371026
+High Quality Crankshaft|1158340332
+High Quality Horse Shoes|1989785143
+High Quality Metal|317398316
+High Quality Metal Ore|-1982036270
+High Quality Pistons|1883981800
+High Quality Spark Plugs|1072924620
+High Quality Valves|-1802083073
+High Velocity Arrow|-1023065463
+High Velocity Rocket|-1841918730
+Hitch & Trough|1160881421
+HMLMG|-1214542497
+Hobo Barrel|-1442559428
+Hockey Mask|-1334569149
+Holosight|442289265
+Homemade Landmine|-1663759755
+Hoodie|1751045826
+Horse Dung|-1579932985
+Horse Saddle|-1997543660
+Hose Tool|363163265
+Huge Wooden Sign|-143132326
+Human Skull|996293980
+Hunting Bow|1443579727
+HV 5.56 Rifle Ammo|1712070256
+HV Pistol Ammo|-1691396643
+Igniter|-44876289
+Improvised Balaclava|-2012470695
+Incendiary 5.56 Rifle Ammo|605467368
+Incendiary Pistol Bullet|51984655
+Incendiary Rocket|1638322904
+Industrial Door|818733919
+Industrial Wall Light|1623701499
+Inner Tube|-697981032
+Inner Tube|185586769
+Inner Tube|2052270186
+Instant Camera|-2001260025
+Jack O Lantern Angry|1242482355
+Jack O Lantern Happy|-1824943010
+Jacket|-1163532624
+Jackhammer|1488979457
+Jerry Can Guitar|-979951147
+Jumpsuit|-97459906
+Junkyard Drum Kit|-1330640246
+Kayak|190184021
+Key Lock|-850982208
+L96 Rifle|-778367295
+Ladder Hatch|1948067030
+Landscape Photo Frame|1697996440
+Landscape Picture Frame|-845557339
+Lantern|1658229558
+Large Animated Neon Sign|1643667218
+Large Banner Hanging|23352662
+Large Banner on pole|2070189026
+Large Candle Set|-489848205
+Large Chassis|-44066790
+Large Flatbed Vehicle Module|-1693832478
+Large Furnace|-1992717673
+Large Loot Bag|479292118
+Large Medkit|254522515
+Large Neon Sign|866332017
+Large Photo Frame|1205084994
+Large Planter Box|1581210395
+Large Present|-1622660759
+Large Rechargeable Battery|553270375
+Large Solar Panel|2090395347
+Large Water Catcher|-1100168350
+Large Wood Box|833533164
+Large Wooden Sign|1153652756
+Laser Detector|-798293154
+Laser Light|853471967
+Leather|1381010055
+Leather Gloves|1366282552
+Light Frankenstein Head|-134959124
+Light Frankenstein Legs|106959911
+Light Frankenstein Torso|-1624770297
+Locker|-110921842
+Locomotive|-2027988285
+Longsleeve T-Shirt|935692442
+Longsword|-1469578201
+Low Grade Fuel|-946369541
+Low Quality Carburetor|656371028
+Low Quality Crankshaft|1158340334
+Low Quality Pistons|1883981798
+Low Quality Spark Plugs|-89874794
+Low Quality Valves|1330084809
+LR-300 Assault Rifle|-1812555177
+Lumberjack Hoodie|-763071910
+Lumberjack Suit|861513346
+M249|-2069578888
+M39 Rifle|28201841
+M92 Pistol|-852563019
+Mace|-1966748496
+Machete|-1137865085
+Mail Box|-586784898
+MC repair|1426574435
+Medical Syringe|1079279582
+Medium Animated Neon Sign|42535890
+Medium Chassis|-44066823
+Medium Frankenstein Head|-1732475823
+Medium Frankenstein Legs|835042040
+Medium Frankenstein Torso|1491753484
+Medium Loot Bag|1899610628
+Medium Neon Sign|-1423304443
+Medium Present|756517185
+Medium Quality Carburetor|656371027
+Medium Quality Crankshaft|1158340331
+Medium Quality Pistons|1883981801
+Medium Quality Spark Plugs|-493159321
+Medium Quality Valves|926800282
+Medium Rechargeable Battery|2023888403
+Medium Wooden Sign|-1819233322
+Megaphone|-583379016
+Memory Cell|-746647361
+Metal Barricade|1655650836
+Metal Blade|1882709339
+Metal Chest Plate|1110385766
+Metal Facemask|-194953424
+Metal Fragments|69511070
+Metal horizontal embrasure|-1199897169
+Metal Ore|-4031221
+Metal Pipe|95950017
+Metal Shop Front|-148229307
+Metal Spring|-1021495308
+Metal Vertical embrasure|-1199897172
+Metal Window Bars|-819720157
+Microphone Stand|39600618
+Miners Hat|-1539025626
+Mining Quarry|1052926200
+Minnows|-542577259
+Mixing Table|1259919256
+MLRS|-1449152644
+MLRS Aiming Module|343045591
+MLRS Rocket|-1843426638
+Mobile Phone|-20045316
+Modular Car Lift|1696050067
+Molotov Cocktail|1556365900
+Movember Moustache|-2047081330
+MP5A4|1318558775
+Multiple Grenade Launcher|-1123473824
+Mummy Suit|277730763
+Mushroom|-1962971928
+Muzzle Boost|-1405508498
+Muzzle Brake|1478091698
+Nailgun|1953903201
+Nailgun Nails|-2097376851
+Nest Hat|1081315464
+Netting|1516985844
+New Year Gong|-961457160
+Night Vision Goggles|-1518883088
+Ninja Suit|-1506417026
+Nomad Suit|491263800
+Note|1414245162
+One Sided Town Sign Post|-1832422579
+OR Switch|-1286302544
+Orange Boomer|-7270019
+Orange Roughy|-1904821376
+Ox Mask|1315082560
+Paddle|1491189398
+Paddling Pool|-733625651
+Painted Egg|-126305173
+Pan Flute|-2040817543
+Pants|237239288
+Paper|-1779183908
+Paper Map|696029452
+Party Hat|-575744869
+Passenger Vehicle Module|895374329
+Pattern Boomer|-379734527
+Photograph|62577426
+Pickaxe|-1302129395
+Pickles|286193827
+Pistol Bullet|785728077
+Pitchfork|1090916276
+Plant Fiber|-804769727
+Plumber's Trumpet|273172220
+Pookie Bear|-1651220691
+Portable Boom Box|576509618
+Portrait Photo Frame|1729712564
+Portrait Picture Frame|-1370759135
+Potato|-2086926071
+Potato Clone|1512054436
+Potato Seed|-2084071424
+Powered Water Purifier|-365097295
+Pressure Pad|-2049214035
+Prison Cell Gate|-956706906
+Prison Cell Wall|-1429456799
+Prototype 17|1914691295
+Prototype Hatchet|-399173933
+Prototype Pickaxe|236677901
+Pump Jack|-1130709577
+Pump Shotgun|795371088
+Pumpkin|-567909622
+Pumpkin Bucket|1346158228
+Pumpkin Plant Clone|1898094925
+Pumpkin Seed|-1511285251
+Pure Anti-Rad Tea|-33009419
+Pure Healing Tea|-1677315902
+Pure Max Health Tea|1712261904
+Pure Ore Tea|1729374708
+Pure Rad. Removal Tea|1905387657
+Pure Scrap Tea|2024467711
+Pure Wood Tea|-557539629
+Purple Sunglasses|20489901
+Python Revolver|1373971859
+Rad. Removal Tea|-496584751
+RAND Switch|492357192
+Rat Mask|271048478
+Raw Bear Meat|-1520560807
+Raw Chicken Breast|-1440987069
+Raw Deer Meat|1422530437
+Raw Fish|989925924
+Raw Horse Meat|-1130350864
+Raw Human Meat|-1709878924
+Raw Pork|621915341
+Raw Wolf Meat|-395377963
+Reactive Target|-1736356576
+Rear Seats Vehicle Module|1376065505
+Red Berry|1272194103
+Red Berry Clone|2133269020
+Red Berry Seed|830839496
+Red Boomer|-1553999294
+Red Dog Tags|-602717596
+Red Industrial Wall Light|-1160621614
+Red Keycard|-1880870149
+Red Roman Candle|-1486461488
+Red Volcano Firework|-454370658
+Reindeer Antlers|-324675402
+Reinforced Glass Window|671706427
+Repair Bench|803222026
+Research Paper|-544317637
+Research Table|-1861522751
+Revolver|649912614
+RF Broadcaster|-1044468317
+RF Pager|-566907190
+RF Receiver|888415708
+RF Transmitter|596469572
+RHIB|1394042569
+Rifle Body|176787552
+Riot Helmet|671063303
+Road Sign Jacket|-2002277461
+Road Sign Kilt|1850456855
+Road Signs|1199391518
+Roadsign Gloves|-699558439
+Roadsign Horse Armor|60528587
+Rock|963906841
+Rocket|-742865266
+Rocket Launcher|442886268
+Root Combiner|-458565393
+Rope|1414245522
+Rotten Apple|352130972
+Rowboat|1878053256
+Rug|-1985799200
+Rug Bear Skin|-1104881824
+Rustigé Egg - Blue|-173268132
+Rustigé Egg - Green|-173268125
+Rustigé Egg - Ivory|-173268126
+Rustigé Egg - Purple|-173268131
+Rustigé Egg - Red|-173268129
+Saddle bag|1400460850
+Salmon|-851988960
+Salt Water|-277057363
+Salvaged Axe|-262590403
+Salvaged Cleaver|-1978999529
+Salvaged Hammer|-1506397857
+Salvaged Icepick|-1780802565
+Salvaged Shelves|1950721418
+Salvaged Sword|1326180354
+SAM Ammo|-384243979
+SAM Site|-1009359066
+Sandbag Barricade|-559599960
+Santa Beard|2126889441
+Santa Hat|-575483084
+Sardine|-1654233406
+Satchel Charge|-1878475007
+Scarecrow|177226991
+Scarecrow Suit|273951840
+Scarecrow Wrap|809942731
+Scientist Suit|-253079493
+Scientist Suit|-1958316066
+Scrap|-932201673
+ScrapTransportHeliRepair|-1884328185
+Search Light|2087678962
+Secret Lab Chair|567871954
+Semi Automatic Body|573926264
+Semi-Automatic Pistol|818877484
+Semi-Automatic Rifle|-904863145
+Sewing Kit|1234880403
+Sheet Metal|-1994909036
+Sheet Metal Door|-2067472972
+Sheet Metal Double Door|1390353317
+Shirt|-2025184684
+Shop Front|-796583652
+Short Ice Wall|1327005675
+Shorts|-1695367501
+Shotgun Trap|352499047
+Shovel Bass|-2107018088
+Sickle|-1368584029
+Silencer|-1850571427
+Silver Egg|1757265204
+Simple Handmade Sight|-855748505
+Simple Light|-282113991
+Single Sign Post|1542290441
+Siren Light|762289806
+Skull|1312843609
+Skull Door Knocker|-216116642
+Skull Fire Pit|553887414
+Skull Spikes|-25740268
+Skull Spikes|-1078639462
+Skull Spikes|-1073015016
+Skull Trophy|-769647921
+Skull Trophy|-156748077
+Skull Trophy|-924959988
+Skull Trophy|971362526
+Sky Lantern|1819863051
+Sky Lantern - Green|-1770889433
+Sky Lantern - Orange|-1824770114
+Sky Lantern - Purple|831955134
+Sky Lantern - Red|-1433390281
+Sled|-135252633
+Sled|-333406828
+Sleeping Bag|-1754948969
+Small Candle Set|-2058362263
+Small Chassis|-44066600
+Small Generator|1849887541
+Small Loot Bag|1319617282
+Small Neon Sign|1305578813
+Small Oil Refinery|-1293296287
+Small Planter Box|1903654061
+Small Present|-722241321
+Small Rechargeable Battery|-692338819
+Small Shark|-1768880890
+Small Stash|-369760990
+Small Stocking|1668858301
+Small Trout|-1878764039
+Small Water Bottle|-1039528932
+Small Water Catcher|-132247350
+Small Wooden Sign|-1138208076
+Smart Alarm|-695978112
+Smart Switch|988652725
+SMG Body|1230323789
+Smoke Grenade|1263920163
+Smoke Rocket WIP!!!!|-17123659
+Snap Trap|-582782051
+Snow Jacket|-48090175
+Snow Machine|1358643074
+Snowball|-363689972
+Snowball Gun|1103488722
+Snowman|1629293099
+Snowman Helmet|-842267147
+Snowmobile|-1364246987
+Sofa|-555122905
+Sofa - Pattern|782422285
+Solo Submarine|-187031121
+Sound Light|-343857907
+Sousaphone|1784406797
+Space Suit|-560304835
+Spas-12 Shotgun|-41440462
+Speargun|-1517740219
+Speargun Spear|-1800345240
+Spider Webs|882559853
+Spinning wheel|-1100422738
+Splitter|-563624462
+Spoiled Chicken|-751151717
+Spoiled Human Meat|1272768630
+Spoiled Wolf Meat|-1167031859
+Spooky Speaker|1885488976
+Spray Can|-596876839
+Spray Can Decal|-1366326648
+Sprinkler|-781014061
+Star Tree Topper|-1331212963
+Sticks|642482233
+Stone Barricade|15388698
+Stone Fireplace|-1535621066
+Stone Hatchet|-1583967946
+Stone Pickaxe|171931394
+Stone Spear|1602646136
+Stones|-2099697608
+Storage Monitor|1149964039
+Storage Vehicle Module|268565518
+Strengthened Glass Window|-1614955425
+Strobe Light|2104517339
+Sulfur|-1581843485
+Sulfur Ore|-1157596551
+Sunglasses|1258768145
+Sunglasses|-2103694546
+Sunglasses|1557173737
+Sunglasses|-176608084
+Sunglasses|-1997698639
+Sunglasses|-1408336705
+Sunglasses|352321488
+SUPER Stocking|-465682601
+Supply Signal|1397052267
+Surface torpedo|-239306133
+Surgeon Scrubs|-1785231475
+Survey Charge|1975934948
+Survival Fish Trap|559147458
+Switch|1951603367
+T-Shirt|223891266
+Table|593465182
+Tactical Gloves|-1108136649
+Tall Picture Frame|121049755
+Tank Top|1608640313
+Targeting Computer|1523195708
+Tarp|2019042823
+Taxi Vehicle Module|-626174997
+Tech Trash|73681876
+Telephone|1234878710
+Tesla Coil|1371909803
+Test Generator|-295829489
+Thompson|-1758372725
+Tiger Mask|709206314
+Timed Explosive Charge|1248356124
+Timer|665332906
+Tomaha Snowmobile|1768112091
+Tool Cupboard|-97956382
+Torch|795236088
+Torpedo|-1671551935
+Tree Lights|1723747470
+Triangle Ladder Hatch|2041899972
+Tuna Can Lamp|-1478445584
+Twitch Rivals Trophy|975983052
+Two Sided Hanging Sign|1205607945
+Two Sided Ornate Hanging Sign|-1647846966
+Two Sided Town Sign Post|826309791
+Vending Machine|198438816
+Violet Boomer|-280223496
+Violet Roman Candle|-99886070
+Violet Volcano Firework|-1538109120
+Vodka Bottle|755224797
+Wagon|996757362
+Watch Tower|-463122489
+Water|-1779180711
+Water Barrel|-1863559151
+Water Bucket|1424075905
+Water Gun|722955039
+Water Jug|-119235651
+Water Pistol|-1815301988
+Water Pump|-1284169891
+Water Purifier|2114754781
+Waterpipe Shotgun|-1367281941
+Weapon flashlight|952603248
+Weapon Lasersight|-132516482
+Wetsuit|-1101924344
+Wheelbarrow Piano|1272430949
+White Berry|854447607
+White Berry Clone|1533551194
+White Berry Seed|-992286106
+White Volcano Firework|261913429
+Wind Turbine|-1819763926
+Wire Tool|-144417939
+Wolf Headdress|-1478212975
+Wolf Skull|2048317869
+Wood|-151838493
+Wood Armor Helmet|-2094954543
+Wood Armor Pants|832133926
+Wood Chestplate|418081930
+Wood Double Door|-1336109173
+Wood Shutters|-1023374709
+Wood Storage Box|-180129657
+Wooden Arrow|-1234735557
+Wooden Barricade|866889860
+Wooden Barricade Cover|1373240771
+Wooden Cross|699075597
+Wooden Door|1729120840
+Wooden Floor Spikes|-92759291
+Wooden Horse Armor|1659447559
+Wooden Ladder|-316250604
+Wooden Spear|1540934679
+Wooden Window Bars|-1183726687
+Work Cart|-810326667
+Workbench Level 1|1524187186
+Workbench Level 2|-41896755
+Workbench Level 3|-1607980696
+Worm|1770475779
+Wrapped Gift|204970153
+Wrapping Paper|1094293920
+XL Picture Frame|-996185386
+XOR Switch|1293102274
+XXL Picture Frame|98508942
+Xylobone|-211235948
+Yellow Berry|1660145984
+Yellow Berry Clone|390728933
+Yellow Berry Seed|-520133715
+Yellow Perch|680234026
