@@ -4,7 +4,7 @@ import customtkinter as ctk
 from PIL import ImageTk, ImageFont, ImageDraw, Image
 from collections import Counter
 import pandas as pd
-DEBUG = True
+DEBUG = False
 
 class SignInPage:
     def __init__(self):
