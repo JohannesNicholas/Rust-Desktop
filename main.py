@@ -1,4 +1,4 @@
-import os, threading, rustplus, asyncio, textdistance
+import os, threading, rustplus, asyncio, textdistance, PIL
 import tkinter as tk
 import customtkinter as ctk
 from PIL import ImageTk, ImageFont, ImageDraw, Image
@@ -443,28 +443,39 @@ class MainWindow:
                 team = self.team #get team info
                 player = [player for player in team.members if player.steam_id == self.steam_id][0] #get the player with the same steam id as the one used to connect to the server
                 mapsize = self.mapsize
-                
+
                 #location to draw the map (by the player)
                 x = 0 - (player.x/mapsize) * 2000
                 y = -2000 + (player.y/mapsize) * 2000
                 # Draw the map on the canvas
                 if os.path.isfile("map.png"):
-                    img = ImageTk.PhotoImage(file="map.png")
+                    img = Image.open("map.png")
                 else:
                     while not os.path.isfile("map.png"):
                         await asyncio.sleep(0.1)
-                    img = ImageTk.PhotoImage(file="map.png")
+                    img = Image.open("map.png")
+                
+                draw = ImageDraw.Draw(img)
+                for i in team.members:
+                    if i.steam_id != self.steam_id:
+                        yy = mapsize-i.y
+                        shape_info = [(i.x/(mapsize/2000)-5, yy/(mapsize/2000)-5), (i.x/(mapsize/2000)+5, yy/(mapsize/2000)+5)]
+                        if i.is_online: fill = "lime"
+                        else: fill = "red"
+                        draw.ellipse(shape_info, fill=fill, outline="black")
+                        draw.text((i.x/(mapsize/2000)-(len(i.name)*4), yy/(mapsize/2000)-25), text=str(i.name), fill="black", font=ImageFont.truetype("assets/Verdana.ttf", 14)) #font appears to be different size vs tkinter?
+                imag = ImageTk.PhotoImage(img)
                 
                 try:
                     if self.map_canvas:
-                        self.map_canvas.create_image(x + self.map_canvas.width/2, y + self.map_canvas.height/2, anchor=tk.NW, image=img)
+                        self.map_canvas.create_image(x + self.map_canvas.width/2, y + self.map_canvas.height/2, anchor=tk.NW, image=imag)
                         
                         # Draw own player
                         self.map_canvas.create_oval(self.map_canvas.width/2 - 5, self.map_canvas.height/2 - 5, self.map_canvas.width/2 + 5, self.map_canvas.height/2 + 5, fill="lime")
                         self.map_canvas.create_text(self.map_canvas.width/2, self.map_canvas.height/2 - 15, text=str(player.name), fill="black", font=("Verdana", 10))
 
                         self.map_canvas.update()
-                except: print("error"); pass # if window changes
+                except: pass # if window changes
             await asyncio.sleep(0.5)
 
 SignInPage()
