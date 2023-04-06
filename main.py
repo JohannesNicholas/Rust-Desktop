@@ -1,4 +1,4 @@
-import os, threading, rustplus, asyncio, textdistance, PIL
+import os, rustplus, asyncio, textdistance, requests
 import tkinter as tk
 import customtkinter as ctk
 from PIL import ImageTk, ImageFont, ImageDraw, Image
@@ -30,7 +30,10 @@ class SignInPage:
         ctk.CTkLabel(self.window, text="Player Token:").pack()
         player_token = ctk.CTkEntry(self.window)
         player_token.pack()
-        ctk.CTkButton(self.window, text="Connect", command=lambda: asyncio.run(self.connect(ip.get(), port.get(), steam_id.get(), player_token.get()))).pack()
+        ctk.CTkLabel(self.window, text="Drone Name (this will follow you):").pack()
+        drone = ctk.CTkEntry(self.window)
+        drone.pack()
+        ctk.CTkButton(self.window, text="Connect", command=lambda: asyncio.run(self.connect(ip.get(), port.get(), steam_id.get(), player_token.get(), drone.get()))).pack()
 
         # Read the config file if it exists
         if os.path.exists("config.json"):
@@ -40,17 +43,17 @@ class SignInPage:
                 port.insert(0, config["port"])
                 steam_id.insert(0, config["steam_id"])
                 player_token.insert(0, config["player_token"])
-
+                drone.insert(0, config["drone"])
 
         self.window.mainloop()
 
 
     # Connect to the server
-    async def connect(self, ip, port, steam_id, player_token):
+    async def connect(self, ip, port, steam_id, player_token, drone=""):
 
         # Save the input fields
         with open("config.json", "w") as f:
-            f.write(f'{{"ip": "{ip}", "port": "{port}", "steam_id": "{steam_id}", "player_token": "{player_token}"}}')
+            f.write(f'{{"ip": "{ip}", "port": "{port}", "steam_id": "{steam_id}", "player_token": "{player_token}", "drone": "{drone}"}}')
         
         if DEBUG: socket = rustplus.RustSocket("rplustestserver.ollieee.xyz", None, 76561198181939243, -718287530, use_test_server=True) 
         else: socket = rustplus.RustSocket(ip, port, int(steam_id), int(player_token))
@@ -73,7 +76,7 @@ class InitWindow:
         self.init_window.update()
         await asyncio.sleep(0.5)
         if not DEBUG: await asyncio.get_event_loop().create_task(self.map_update_loop())
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(1.5)
         self.init_window.destroy()
 
         main_window = MainWindow()
@@ -85,14 +88,14 @@ class InitWindow:
         monuments = (await self.socket.get_raw_map_data()).monuments
         mapsize = await self.socket.get_info()
         map = map.resize((mapsize.size,mapsize.size), Image.LANCZOS)
-        rustfont = ImageFont.truetype(font="assets/RustMarker.ttf", size=64)
+        rustfont = ImageFont.truetype(font="assets/RustMarker.ttf", size=32)
         monument_list = {
                 "lighthouse_display_name": "Lighthouse",
                 "large_oil_rig": "Large Oil Rig",
                 "oil_rig_small": "Small Oil Rig",
                 "underwater_lab": "Underwater Labs",
                 "mining_outpost_display_name": "Mining Outpost",
-                "supermarket": "Supermarket",
+                "supermarket": "Abandoned Supermarket",
                 "gas_station": "Gas Station",
                 "dome_monument_name": "Dome",
                 "swamp": "Swamp",
@@ -131,9 +134,9 @@ class InitWindow:
             remx = 0; remy = 0 # just for overriding some positions, allows to manually re-adjust
             if "excavator" in name.lower(): remy = 60
             elif "water treatment plant" in name.lower(): remy=40
-            draw.text(xy=(rustplus.format_coord(int(monument.x-int(len(name)*11)-remx), int(monument.y-remy), mapsize.size)), text=name, font=rustfont, fill="black")
+            draw.text(xy=(rustplus.format_coord(int(monument.x-int(len(name)*6)-remx), int(monument.y-remy-32), mapsize.size)), text=name, font=rustfont, fill="black")
         map = map.resize((2000,2000), Image.LANCZOS)
-        map.save("map.png")
+        map.save("map.png", optimize=True)
         return
 
 class MapCanvas(ctk.CTkCanvas):
@@ -150,11 +153,6 @@ class MapCanvas(ctk.CTkCanvas):
         self.config(width=self.width, height=self.height)
         self.scale("all",0,0,wscale,hscale)
 class TeamCanvas(ctk.CTkCanvas):
-    def __init__(self,parent,**kwargs):
-        ctk.CTkCanvas.__init__(self,parent,**kwargs)
-        self.height = self.winfo_reqheight()
-        self.width = self.winfo_reqwidth()
-class ServerCanvas(ctk.CTkCanvas):
     def __init__(self,parent,**kwargs):
         ctk.CTkCanvas.__init__(self,parent,**kwargs)
         self.height = self.winfo_reqheight()
@@ -178,7 +176,6 @@ class MainWindow:
         types = { #define the class and self names
             "Map": [MapCanvas, self.map_canvas],
             "Team": [TeamCanvas, self.team_canvas],
-            "Server": [ServerCanvas, self.server_canvas],
             "Search": [SearchCanvas, self.search_canvas]
         }
 
@@ -192,8 +189,6 @@ class MainWindow:
                     if self.map_canvas != None: self.map_canvas.destroy(); self.map_canvas = None
                 if i == "Team":
                     if self.team_canvas != None: self.team_canvas.destroy(); self.team_canvas = None; self.widgets = []; self.team_info = None
-                if i == "Server":
-                    if self.server_canvas != None: self.server_canvas.destroy(); self.server_canvas = None; self.server_info = None
                 if i == "Search":
                     if self.search_canvas != None: self.search_canvas.destroy(); self.search_canvas = None
 
@@ -204,9 +199,6 @@ class MainWindow:
             elif types[typee][0] == TeamCanvas:
                 self.team_canvas = TeamCanvas(self.main_window, width=525, height=650, bg="gray14", highlightthickness=0)
                 self.team_canvas.pack()
-            elif types[typee][0] == ServerCanvas:
-                self.server_canvas = ServerCanvas(self.main_window, width=525, height=650, bg="gray14", highlightthickness=0)
-                self.server_canvas.pack()
             elif types[typee][0] == SearchCanvas:
                 self.search_canvas = SearchCanvas(self.main_window, width=525, height=650, bg="gray14", highlightthickness=0)
                 self.search_canvas.pack()
@@ -309,13 +301,11 @@ class MainWindow:
 
         self.map_canvas = None
         self.team_canvas = None
-        self.server_canvas = None
         self.search_canvas = None
 
         self.team_info = None
-        self.server_info = None
-        self.server = None
         self.widgets = []
+        self.additional_players = {} #add players here with their exact x and y coords and itll go onto the minimap ex:self.additional_players[i.steam_id] = [i.name, i.x, i.y]
         
         self.main_window = ctk.CTk()
         self.main_window.title("Rust+Desktop")
@@ -335,7 +325,6 @@ class MainWindow:
         self.menu.create_line(0,165,130,165,fill="black", width=3)
         ctk.CTkButton(self.menu, 110, 30, text="Map", fg_color="#0d610c", hover_color="#063b05", command=lambda:self.topage("Map")).pack(pady=(15,0))
         ctk.CTkButton(self.menu, 110, 30, text="Team", command=lambda:self.topage("Team")).pack(pady=(5,0))
-        ctk.CTkButton(self.menu, 110, 30, text="Server", command=lambda:self.topage("Server")).pack(pady=(5,0))
         ctk.CTkButton(self.menu, 110, 30, text="Search", command=lambda:self.topage("Search")).pack(pady=(5,0))
 
         #Canvas for the map
@@ -345,7 +334,6 @@ class MainWindow:
         asyncio.create_task(self.time_loop()) #update time
         asyncio.create_task(self.location_update_loop()) #update minimap
         asyncio.create_task(self.update_team()) #self.team and teamcanvas updater
-        asyncio.create_task(self.update_server()) #self.server and servercanvas updater
 
         while True:
             try: self.main_window.update()
@@ -361,31 +349,6 @@ class MainWindow:
                 exit()
                 
             await asyncio.sleep(0.1)
-
-    async def update_server(self):
-        print("LOOPS | Update Server Started")
-        while True:
-            try:
-                if not self.main_window.winfo_exists():
-                    break
-            except: break
-            s = await self.socket.get_info()
-            self.server = s
-            if self.server_canvas:
-                if not self.server_info:
-                    self.server_info = ctk.CTkFrame(self.server_canvas, height=500, width=1920, corner_radius=10, fg_color="gray10", bg_color="gray10")
-                    self.server_info.pack()
-                    ctk.CTkLabel(self.server_info, anchor="w", width=self.server_canvas.width/2, height=50, bg_color="gray10", fg_color="gray10", corner_radius=15, text=f"Name: {s.name}", font=("Verdana", 16)).grid(row=1, column=1)
-                    ctk.CTkLabel(self.server_info, anchor="w", width=self.server_canvas.width/2, height=50, bg_color="gray10", fg_color="gray10", corner_radius=15, text=f"URL: {s.url}", font=("Verdana", 16)).grid(row=2, column=1)
-                    ctk.CTkLabel(self.server_info, anchor="w", width=self.server_canvas.width/2, height=50, bg_color="gray10", fg_color="gray10", corner_radius=15, text=f"Map Size: {s.size}", font=("Verdana", 16)).grid(row=1, column=2)
-                    ctk.CTkLabel(self.server_info, anchor="w", width=self.server_canvas.width/2, height=50, bg_color="gray10", fg_color="gray10", corner_radius=15, text=f"Players: {s.players}", font=("Verdana", 16)).grid(row=2, column=2)
-                else:
-                    for i in self.server_info.winfo_children():
-                        if "Name: " in i._text: i.configure(text=f"Name: {s.name}")
-                        elif "URL: " in i._text: i.configure(text=f"URL: {s.url}")
-                        elif "Map Size: " in i._text: i.configure(text=f"Map Size: {s.size}")
-                        elif "Players: " in i._text: i.configure(text=f"Players: {s.players}")
-                await asyncio.sleep(5)
 
     async def update_team(self):
         print("LOOPS | Update Team Started")
@@ -418,7 +381,7 @@ class MainWindow:
                             ctk.CTkLabel(frame, width=self.team_canvas.width/2, bg_color="#114f80", fg_color="#114f80", text=f"{i.steam_id}", font=("Noto Sans", 17), anchor="nw").grid(row=2, column=1)
                             ctk.CTkLabel(frame, width=self.team_canvas.width/2, bg_color="#114f80", fg_color="#114f80", text_color=coloron, text="Online", font=("Noto Sans", 17), anchor="nw").grid(row=1, column=2)
                             ctk.CTkLabel(frame, width=self.team_canvas.width/2, bg_color="#114f80", fg_color="#114f80", text_color=coloral, text=f"Alive", font=("Noto Sans", 17), anchor="nw").grid(row=2, column=2) 
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(1.5)
 
     async def time_loop(self):
         print("LOOPS | Time Loop Started")
@@ -429,7 +392,7 @@ class MainWindow:
             except: break
             try:
                 self.time_label.configure(text=f"Time: {(await self.socket.get_time()).time}")
-                await asyncio.sleep(1)
+                await asyncio.sleep(5)
             except: await asyncio.sleep(0.5)
 
     async def location_update_loop(self):
@@ -447,23 +410,44 @@ class MainWindow:
                 #location to draw the map (by the player)
                 x = 0 - (player.x/mapsize) * 2000
                 y = -2000 + (player.y/mapsize) * 2000
-                # Draw the map on the canvas
-                if os.path.isfile("map.png"):
-                    img = Image.open("map.png")
-                else:
-                    while not os.path.isfile("map.png"):
-                        await asyncio.sleep(0.1)
-                    img = Image.open("map.png")
-                
+                #Draw the map on the canvas
+                img = Image.open("map.png")
+
                 draw = ImageDraw.Draw(img)
-                for i in team.members:
+                for i in team.members: #add team members to the additional players list and update pos
                     if i.steam_id != self.steam_id:
-                        yy = mapsize-i.y
-                        shape_info = [(i.x/(mapsize/2000)-5, yy/(mapsize/2000)-5), (i.x/(mapsize/2000)+5, yy/(mapsize/2000)+5)]
-                        if i.is_online: fill = "lime"
+                        self.additional_players[i.steam_id] = [i.name, i.x+20, i.y+20, i.is_online]
+                
+                entities = []
+                coords = (0,0)
+                status = 0
+                try: r = requests.get("http://127.0.0.1/", timeout=1); status = r.status_code
+                except: pass
+                if status == 200:
+                    if "{" in r.text and "}" in r.text:
+                        entities = r.json()
+                        if len(entities) != 0:
+                            for i in entities:
+                                if str(entities[i]["name"]).lower() == str(player.name).lower(): coords = (entities[i]["position"][0], entities[i]["position"][1]); break
+                            if coords != (0,0):
+                                for i in entities:
+                                    if str(entities[i]["name"]) != str(player.name) and str(entities[i]["name"]).upper().isupper():
+                                        ix = (player.x - coords[0]) - entities[i]["position"][0]
+                                        iy = (player.y - coords[1]) - entities[i]["position"][1]
+                                        self.additional_players[i] = [entities[i]["name"], ix, iy]
+
+                for i in self.additional_players:
+                    yy = mapsize-self.additional_players[i][2] #get y
+                    xx = self.additional_players[i][1] #get x
+                    name = self.additional_players[i][0] #get name
+                    shape_info = [(xx/(mapsize/2000)-5, yy/(mapsize/2000)-5), (xx/(mapsize/2000)+5, yy/(mapsize/2000)+5)] #10x10 ellipse
+                    if len(self.additional_players[i]) > 3: #check if is online value exists
+                        if self.additional_players[i][3]: fill = "lime"
                         else: fill = "red"
-                        draw.ellipse(shape_info, fill=fill, outline="black")
-                        draw.text((i.x/(mapsize/2000)-(len(i.name)*4), yy/(mapsize/2000)-25), text=str(i.name), fill="black", font=ImageFont.truetype("assets/Verdana.ttf", 14)) #font appears to be different size vs tkinter?
+                    else: fill="lime"
+                    draw.ellipse(shape_info, fill=fill, outline="black")
+                    draw.text((xx/(mapsize/2000)-(len(name)*4), yy/(mapsize/2000)-25), text=str(name), fill="black", font=ImageFont.truetype("assets/Verdana.ttf", 14)) #font appears to be different size vs tkinter?
+                self.additional_players = []
                 imag = ImageTk.PhotoImage(img)
                 
                 try:
@@ -475,7 +459,7 @@ class MainWindow:
                         self.map_canvas.create_text(self.map_canvas.width/2, self.map_canvas.height/2 - 15, text=str(player.name), fill="black", font=("Verdana", 10))
 
                         self.map_canvas.update()
-                except: pass # if window changes
-            await asyncio.sleep(0.5)
+                except Exception as e: pass # if window changes
+            await asyncio.sleep(1.25)
 
 SignInPage()
